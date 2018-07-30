@@ -4,6 +4,14 @@ package co.com.scalatraining.modelling.dominio.entidades
 
 sealed trait Ubicacion {
   def actualizarUbicacion(ubicacionActual: Ubicacion, instruccion: Instruccion): Ubicacion
-  def obtenerCoordenada():Coordenada
-  def obtenerOrientacion():Int
 }
+
+sealed trait AlgebraServiciosDrone {
+  def mover(ubicacionActual: Ubicacion, instruccion: Instruccion): Ubicacion
+  def girarIzquierda(ubicacionActual: Ubicacion, instruccion: Instruccion): Ubicacion
+  def girarDerecha(ubicacionActual: Ubicacion, instruccion: Instruccion): Ubicacion
+  def seguirAdelante(ubicacionActual: Ubicacion, instruccion: Instruccion): Ubicacion
+}
+
+
+
