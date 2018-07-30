@@ -1,0 +1,27 @@
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial source changes: [0m
+[0m[[0m[0mdebug[0m] [0m[0m	removed:Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m	added: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m	modified: Set(/home/seven4/Documents/DronesParaDomicilio/src/main/scala/co/com/scalatraining/modelling/dominio/entidades/entidades.scala)[0m
+[0m[[0m[0mdebug[0m] [0m[0mInvalidated products: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mExternal API changes: API Changes: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mModified binary dependencies: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial directly invalidated classes: Set(co.com.scalatraining.modelling.dominio.entidades.entidades.Norte, co.com.scalatraining.modelling.dominio.entidades.entidades.Direccion, co.com.scalatraining.modelling.dominio.entidades.entidades.Coordenada, co.com.scalatraining.modelling.dominio.entidades.entidades.Estado, co.com.scalatraining.modelling.dominio.entidades.entidades.Este, co.com.scalatraining.modelling.dominio.entidades.entidades.Ordenada, co.com.scalatraining.modelling.dominio.entidades.entidades.A, co.com.scalatraining.modelling.dominio.entidades.entidades.Sur, co.com.scalatraining.modelling.dominio.entidades.entidades, co.com.scalatraining.modelling.dominio.entidades.entidades.Orientacion, co.com.scalatraining.modelling.dominio.entidades.entidades.Instruccion, co.com.scalatraining.modelling.dominio.entidades.entidades.I, co.com.scalatraining.modelling.dominio.entidades.entidades.D, co.com.scalatraining.modelling.dominio.entidades.entidades.InterpretacionDrone, co.com.scalatraining.modelling.dominio.entidades.entidades.Oeste, co.com.scalatraining.modelling.dominio.entidades.entidades.Abscisa, co.com.scalatraining.modelling.dominio.entidades.entidades.AlgebraDrone)[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mSources indirectly invalidated by:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	product: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m	binary dep: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m	external source: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mAll sources are invalidated.[0m
+[0m[[0m[0mdebug[0m] [0m[0mRecompiling all 1 sources: invalidated sources (1) exceeded 50.0% of all sources[0m
+[0m[[0m[0minfo[0m] [0m[0mCompiling 1 Scala source to /home/seven4/Documents/DronesParaDomicilio/target/scala-2.12/classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mGetting org.scala-sbt:compiler-bridge_2.12:1.2.0:compile for Scala 2.12.6[0m
+[0m[[0m[0mdebug[0m] [0m[0mGetting org.scala-sbt:compiler-bridge_2.12:1.2.0:compile for Scala 2.12.6[0m
+[0m[[0m[0mdebug[0m] [0m[0m[zinc] Running cached compiler 4a6c7a7e for Scala compiler version 2.12.6[0m
+[0m[[0m[0mdebug[0m] [0m[0m[zinc] The Scala compiler is invoked with:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-bootclasspath[0m
+[0m[[0m[0mdebug[0m] [0m[0m	/usr/lib/jvm/jdk1.8.0_181/jre/lib/resources.jar:/usr/lib/jvm/jdk1.8.0_181/jre/lib/rt.jar:/usr/lib/jvm/jdk1.8.0_181/jre/lib/sunrsasign.jar:/usr/lib/jvm/jdk1.8.0_181/jre/lib/jsse.jar:/usr/lib/jvm/jdk1.8.0_181/jre/lib/jce.jar:/usr/lib/jvm/jdk1.8.0_181/jre/lib/charsets.jar:/usr/lib/jvm/jdk1.8.0_181/jre/lib/jfr.jar:/usr/lib/jvm/jdk1.8.0_181/jre/classes:/home/seven4/.sbt/boot/scala-2.12.6/lib/scala-library.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-classpath[0m
+[0m[[0m[0mdebug[0m] [0m[0m	/home/seven4/Documents/DronesParaDomicilio/target/scala-2.12/classes:/home/seven4/.ivy2/cache/org.scalactic/scalactic_2.12/bundles/scalactic_2.12-3.0.5.jar:/home/seven4/.sbt/boot/scala-2.12.6/lib/scala-reflect.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0mCompilation failed (CompilerInterface)[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mcompileIncremental[0m) Compilation failed[0m
