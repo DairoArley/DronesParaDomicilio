@@ -2,6 +2,17 @@ package co.com.scalatraining.modelling.dominio.entidades
 
 class interpretes {
 
+  sealed trait ServiciosUbicacion extends AlgebraUbicacion{
+    override def actualizarUbicacion(ubicacionActual: Ubicacion, instruccion: Instruccion): Ubicacion = {
+      instruccion match {
+        case A() => {for ()}
+        case I() =>
+        case D() =>
+        case _ =>
+      }
+    }
+  }
+
   object Instruccion {
     def newInstruccion(c: Char): Instruccion = {
       c match {
@@ -15,20 +26,41 @@ class interpretes {
 
   sealed trait InterpretacionServiciosDrone extends AlgebraServiciosDrone {
     override def mover(ubicacionActual: Ubicacion, instruccion: Instruccion): Ubicacion = {
-      instruccion match {
-        case A() => val hola = for {
+      /*val hola = for {
+        x <- instruccion
+      }yield{}*/
 
-        } yield
+
+      instruccion match {
+        case A() => seguirAdelante(ubicacionActual)
         case I() =>
         case D() =>_
       }
     }
 
-    override def girarIzquierda(ubicacionActual: Ubicacion, instruccion: Instruccion): Ubicacion = ???
+    override def girarIzquierda(ubicacionActual: Ubicacion, instruccion: Instruccion): Ubicacion = {
+      val aux = ubicacionActual.coordenada
+      val retorno = ubicacionActual.orientacion match {
+        case Norte(char) => Ubicacion(Coordenada(aux.x, aux.y + 1), ubicacionActual.orientacion)
+        case Sur(char) => Ubicacion(Coordenada(aux.x, aux.y - 1), ubicacionActual.orientacion)
+        case Oeste(char) => Ubicacion(Coordenada(aux.x - 1, aux.y), ubicacionActual.orientacion)
+        case Este(char) => Ubicacion(Coordenada(aux.x + 1, aux.y), ubicacionActual.orientacion)
+      }
+      retorno
+    }
 
     override def girarDerecha(ubicacionActual: Ubicacion, instruccion: Instruccion): Ubicacion = ???
 
-    override def seguirAdelante(ubicacionActual: Ubicacion, instruccion: Instruccion): Ubicacion = ???
+    override def seguirAdelante(ubicacionActual: Ubicacion): Ubicacion = {
+      val aux = ubicacionActual.coordenada
+      val retorno = ubicacionActual.orientacion match {
+        case Norte(char) => Ubicacion(Coordenada(aux.x, aux.y+1), ubicacionActual.orientacion)
+        case Sur(char) => Ubicacion(Coordenada(aux.x, aux.y-1), ubicacionActual.orientacion)
+        case Oeste(char) => Ubicacion(Coordenada(aux.x-1, aux.y), ubicacionActual.orientacion)
+        case Este(char) => Ubicacion(Coordenada(aux.x+1, aux.y), ubicacionActual.orientacion)
+      }
+      retorno
+    }
 
   }
 
