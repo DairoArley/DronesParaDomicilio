@@ -1,10 +1,4 @@
-[0m[[0m[31merror[0m] [0m[0m/home/seven4/Documents/DronesParaDomicilio/src/main/scala/co/com/scalatraining/modelling/dominio/entidades/entidades.scala:18:7: '=>' expected but '}' found.[0m
-[0m[[0m[31merror[0m] [0m[0m      }[0m
-[0m[[0m[31merror[0m] [0m[0m      ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/seven4/Documents/DronesParaDomicilio/src/main/scala/co/com/scalatraining/modelling/dominio/entidades/entidades.scala:23:66: identifier expected but ',' found.[0m
-[0m[[0m[31merror[0m] [0m[0m    def apply(ubicacion: Ubicacion): Drone = new Drone(ubicacion., ubicacion.obtenerorientacion())[0m
-[0m[[0m[31merror[0m] [0m[0m                                                                 ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/seven4/Documents/DronesParaDomicilio/src/main/scala/co/com/scalatraining/modelling/dominio/entidades/entidades.scala:37:57: identifier expected but ')' found.[0m
-[0m[[0m[31merror[0m] [0m[0m        case A() => val hola = for(x <- ubicacionActual.) yield[0m
-[0m[[0m[31merror[0m] [0m[0m                                                        ^[0m
-[0m[[0m[31merror[0m] [0m[0mthree errors found[0m
+[0m[[0m[31merror[0m] [0m[0m/home/seven4/Documents/DronesParaDomicilio/src/main/scala/co/com/scalatraining/modelling/dominio/servicio/servicioDrone.scala:62:31: '{' expected but '(' found.[0m
+[0m[[0m[31merror[0m] [0m[0m    val hola = ruta.list match([0m
+[0m[[0m[31merror[0m] [0m[0m                              ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
