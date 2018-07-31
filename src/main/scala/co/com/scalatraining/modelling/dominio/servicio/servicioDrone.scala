@@ -57,18 +57,10 @@ sealed trait InterpretacionServicioDrone extends AlgebraServicioDrone {
   }
 
   override def llevarAlmuerzo(ruta: Ruta, drone: Drone): Reporte = {
-    //val recorrido = Recorrido(List(drone.ubicacion))
-    //val camino = ruta.list.map(x => {moverDrone(x, recorrido.list.last)} )
-    val recorrido = List(Drone)
+    val recorrido = List(drone)
+    val liposAct = ruta.list.foldLeft(recorrido){(resultado, item) => resultado :+ moverDrone(item, resultado.last)}
 
-    var ruta1 = ruta.list.fold(recorrido){
-      (resultado, item)=> resultado= resultado moverDrone(item, recorrido.last)
-    }
-
-    val rute = ruta.list.foreach(
-      recorrido.
-    )
-
+    Reporte(recorrido.last.ubicacion.coordenada.x, recorrido.last.ubicacion.coordenada.x, recorrido.last.ubicacion.orientacion)
   }
 
   override def llevarPedido(pedido: Pedido, drone: Drone): List[Reporte] = {

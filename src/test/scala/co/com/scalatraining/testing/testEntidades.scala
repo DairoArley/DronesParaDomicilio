@@ -44,6 +44,7 @@ class testEntidades extends FunSuite {
     val drone = Drone(Ubicacion(Coordenada(0,0), Norte('N')), 10, 1)
     val pasos = List(Drone)
 
+    val hola = moverDrone()
 
 
 

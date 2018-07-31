@@ -12,3 +12,4 @@ testOnly co.com.scalatraining.testing.testEntidades
 compile
 test:compile
 testOnly co.com.scalatraining.testing.testEntidades
+exit
