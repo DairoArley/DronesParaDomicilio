@@ -1,4 +1,9 @@
-[0m[[0m[31merror[0m] [0m[0mC:\Users\Dairo Arley\Downloads\DronesParaDomicilio\src\main\scala\co\com\scalatraining\modelling\dominio\servicio\servicioArchivo.scala:15:41: co.com.scalatraining.modelling.dominio.entidades.Instruccion.type does not take parameters[0m
-[0m[[0m[31merror[0m] [0m[0m    Pedido(List(Entrega(List(Instruccion() ))))[0m
-[0m[[0m[31merror[0m] [0m[0m                                        ^[0m
-[0m[[0m[31merror[0m] [0m[0mone error found[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/seven4/Documents/DronesParaDomicilio/src/main/scala/co/com/scalatraining/modelling/dominio/servicio/servicioDrone.scala:34:35: match may not be exhaustive.[0m
+[0m[[0m[33mwarn[0m] [0m[0mIt would fail on the following inputs: Este((x: Char forSome x not in 'E')), Norte((x: Char forSome x not in 'N')), Oeste((x: Char forSome x not in 'S')), Sur((x: Char forSome x not in 'S'))[0m
+[0m[[0m[33mwarn[0m] [0m[0m    val retorno = drone.ubicacion.orientacion match {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/seven4/Documents/DronesParaDomicilio/src/main/scala/co/com/scalatraining/modelling/dominio/servicio/servicioDrone.scala:45:35: match may not be exhaustive.[0m
+[0m[[0m[33mwarn[0m] [0m[0mIt would fail on the following inputs: Este((x: Char forSome x not in 'E')), Norte((x: Char forSome x not in 'N')), Oeste((x: Char forSome x not in 'O')), Sur((x: Char forSome x not in 'S'))[0m
+[0m[[0m[33mwarn[0m] [0m[0m    val retorno = drone.ubicacion.orientacion match {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mtwo warnings found[0m

@@ -14,3 +14,10 @@ test:compile
 testOnly co.com.scalatraining.testing.testEntidades
 exit
 testOnly co.com.scalatraining.testing.testEntidades
+complie
+compile
+testOnly co.com.scalatraining.testing.testEntidades
+compile
+testOnly co.com.scalatraining.testing.testEntidades
+compile
+testOnly co.com.scalatraining.testing.testEntidades
