@@ -7,10 +7,9 @@ sealed trait AlgebraServicioDrone {
   def girarIzquierda(drone: Drone): Ubicacion
   def girarDerecha(drone: Drone): Ubicacion
   def seguirAdelante(drone: Drone): Ubicacion
-  def llevarAlmuerzo(ruta: Ruta, drone: Drone):Reporte
+  def llevarAlmuerzo(entrega: Entrega, drone: Drone):Reporte
   def llevarPedido(pedido: Pedido, drone: Drone):List[Reporte]
 }
-
 sealed trait InterpretacionServicioDrone extends AlgebraServicioDrone {
 
   override def moverDrone( instruccion: Instruccion, drone: Drone ): Drone = {
@@ -56,11 +55,12 @@ sealed trait InterpretacionServicioDrone extends AlgebraServicioDrone {
     retorno
   }
 
-  override def llevarAlmuerzo(ruta: Ruta, drone: Drone): Reporte = {
+  override def llevarAlmuerzo(entrega: Entrega, drone: Drone): Reporte = {
     val recorrido = List(drone)
-    val liposAct = ruta.list.foldLeft(recorrido){(resultado, item) => resultado :+ moverDrone(item, resultado.last)}
+    val trazo = entrega.list.foldLeft(recorrido){(resultado, item) => resultado :+ moverDrone(item, resultado.last)}
 
-    Reporte(recorrido.last.ubicacion.coordenada.x, recorrido.last.ubicacion.coordenada.x, recorrido.last.ubicacion.orientacion)
+    println(recorrido)
+    Reporte(trazo.last.ubicacion.coordenada.x, trazo.last.ubicacion.coordenada.x, trazo.last.ubicacion.orientacion)
   }
 
   override def llevarPedido(pedido: Pedido, drone: Drone): List[Reporte] = {

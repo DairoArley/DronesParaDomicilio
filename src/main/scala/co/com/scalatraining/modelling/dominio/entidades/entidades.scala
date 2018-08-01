@@ -10,7 +10,7 @@ case class Este(char: Char) extends Orientacion
 
 case class Coordenada(x:Int, y:Int)
 
-case class Ruta(list: List[Instruccion])
+case class Entrega(list: List[Instruccion])
 
 case class Ubicacion(coordenada: Coordenada, orientacion: Orientacion)
 
@@ -23,9 +23,7 @@ case class Drone(ubicacion: Ubicacion, capacidad:Int, id:Int)
 
 case class Recorrido(list: List[Ubicacion] )
 
-case class Pedido(list: List[Ruta])
-
-//case class Entrega(ruta: Ruta, entregado:Boolean)
+case class Pedido(list: List[Entrega])
 
 case class Reporte(x:Int, y:Int, orientacion: Orientacion)
 
