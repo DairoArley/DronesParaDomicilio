@@ -1,4 +1,4 @@
-[0m[[0m[33mwarn[0m] [0m[0m/home/seven4/Documents/DronesParaDomicilio/src/test/scala/co/com/scalatraining/testing/testEntidades.scala:44:11: comparing case class values of types co.com.scalatraining.modelling.dominio.entidades.Drone and co.com.scalatraining.modelling.dominio.entidades.Reporte using `==' will always yield false[0m
-[0m[[0m[33mwarn[0m] [0m[0m    assert(hola == Reporte(-2, -2, Norte('N') ) )[0m
-[0m[[0m[33mwarn[0m] [0m[0m          ^[0m
-[0m[[0m[33mwarn[0m] [0m[0mone warning found[0m
+[0m[[0m[31merror[0m] [0m[0m/home/seven4/Documents/DronesParaDomicilio/src/test/scala/co/com/scalatraining/testing/testEntidades.scala:121:20: value isFailure is not a member of co.com.scalatraining.modelling.dominio.entidades.Pedido[0m
+[0m[[0m[31merror[0m] [0m[0m    assert(!pedido.isFailure )[0m
+[0m[[0m[31merror[0m] [0m[0m                   ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m

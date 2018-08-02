@@ -2,114 +2,135 @@ package co.com.scalatraining.modelling.dominio.servicio
 
 import co.com.scalatraining.modelling.dominio.entidades._
 
-import scala.concurrent.Future
+import scala.concurrent.{ExecutionContext, Future}
+import scala.reflect.internal.Trees
 import scala.util.{Failure, Success, Try}
 
 sealed trait AlgebraServicioDrone {
-  def moverDrone(instruccion: Instruccion, drone: Drone): Drone
+  def moverDrone(instruccion: Instruccion, drone: Try[Drone]): Try [Drone]
   def girarIzquierda(drone: Try [ Drone ]): Try[Ubicacion]
   def girarDerecha(drone: Try [ Drone ]): Try[Ubicacion]
   def seguirAdelante(drone: Try[ Drone ]): Try[Ubicacion]
-  def pocisionEsValida(x:Int, y:Int):Boolean
-  def llevarAlmuerzo(entrega: Entrega, drone: Drone):Drone
+  def pocisionEsValida(drone: Drone, ubicacion: Ubicacion):Try[Ubicacion]
+  def llevarEntrega(entrega: Entrega, drone:Try[ Drone ]):Try[Drone]
   def llevarPedido(pedido: Pedido, drone: Drone):List[Reporte]
-  def tomarPedido(list: List[String]):Try[Pedido]
+  def tomarPedido(list: List[String]):Pedido
+  def mandarDrones(listaDrones: List[Drone], listaPedidos :List[Pedido])
+  def tomarPedidos(list: List[List[String]]): List[Pedido]
+  def reportarInformacion(drone: Drone)
 
 }
 sealed trait InterpretacionServicioDrone extends AlgebraServicioDrone {
 
-  override def moverDrone( instruccion: Instruccion, drone: Drone ): Drone = {
+  override def moverDrone( instruccion: Instruccion, drone: Try[Drone] ): Try[Drone] = {
+    //val drone1 = drone.getOrElse(return Failure{Drone})
     val ubicacion = instruccion match {
-      case A() => seguirAdelante(Try(drone) )
-      case I() => girarIzquierda( Try (drone) )
-      case D() => girarDerecha( Try (drone) )
+      case A() => seguirAdelante(drone )
+      case I() => girarIzquierda( drone )
+      case D() => girarDerecha( drone )
     }
-    //A la redonda
-    ubicacion match {
-      case Success(nam) => Drone(ubicacion.get, drone.capacidad, drone.id)
-      case _ => Drone(Ubicacion(Coordenada(0, 0), Norte('N')), drone.capacidad, drone.id)
-    }
+    //Asumiendo que un objeto compuesto de atributo Failure es un Failure
+
+    Try { Drone(ubicacion.get, drone.get.capacidad, drone.get.id) }
   }
 
   override def girarIzquierda(drone:Try[ Drone ]): Try[Ubicacion] = {
     val coordenada = drone.get.ubicacion.coordenada
-    val retorno = drone.get.ubicacion.orientacion match {
-      case Norte('N') => Try {Ubicacion(coordenada, Oeste('O') )}
-      case Sur('S') => Try {Ubicacion(coordenada, Este('E'))}
-      case Oeste('S') => Try{ Ubicacion(coordenada, Sur('S')) }
-      case Este('E') => Try{ Ubicacion(coordenada, Norte('N') ) }
+    //val orientacion1 = drone.getOrElse()
+    drone.get.ubicacion.orientacion match {
+      case Norte('N') => Try {
+        Ubicacion(coordenada, Oeste('O'))
+      }
+      case Sur('S') => Try {
+        Ubicacion(coordenada, Este('E'))
+      }
+      case Oeste('S') => Try {
+        Ubicacion(coordenada, Sur('S'))
+      }
+      case Este('E') => Try {
+        Ubicacion(coordenada, Norte('N'))
+      }
     }
-    retorno
   }
 
   override def girarDerecha(drone: Try[Drone]): Try[Ubicacion ]= {
     val coordenada = drone.get.ubicacion.coordenada
-    val retorno = drone.get.ubicacion.orientacion match {
-      case Norte('N') => Try{ Ubicacion(coordenada, Este('E'))}
-      case Sur('S') => Try{ Ubicacion(coordenada, Oeste('O')) }
-      case Oeste('O') => Try{ Ubicacion(coordenada, Norte('N')) }
-      case Este('E') => Try{ Ubicacion(coordenada, Sur('S')) }
+    drone.get.ubicacion.orientacion match {
+      case Norte('N') => Try {
+        Ubicacion(coordenada, Este('E'))
+      }
+      case Sur('S') => Try {
+        Ubicacion(coordenada, Oeste('O'))
+      }
+      case Oeste('O') => Try {
+        Ubicacion(coordenada, Norte('N'))
+      }
+      case Este('E') => Try {
+        Ubicacion(coordenada, Sur('S'))
+      }
     }
-    retorno
   }
 
   override def seguirAdelante(drone:Try[ Drone ]): Try[Ubicacion] = {
     val coordenada = drone.get.ubicacion.coordenada
     val orientacion = drone.get.ubicacion.orientacion
     drone.get.ubicacion.orientacion match {
-      case Norte(char) =>  if( !pocisionEsValida(coordenada.x, coordenada.y+1) ) Try(throw new Exception("Paila"))else
-        Try{ Ubicacion(Coordenada(coordenada.x, coordenada.y+1), orientacion) }
-      case Sur(char) => if( !pocisionEsValida(coordenada.x, coordenada.y-1) ) Try(throw new Exception("Paila"))else
-        Try{ Ubicacion(Coordenada(coordenada.x, coordenada.y-1), orientacion) }
-      case Oeste(char) => if( !pocisionEsValida(coordenada.x-1, coordenada.y) ) Try(throw new Exception("Paila"))else
-        Try{ Ubicacion(Coordenada(coordenada.x-1, coordenada.y), orientacion) }
-      case Este(char) => if( !pocisionEsValida(coordenada.x+1, coordenada.y) ) Try(throw new Exception("Paila"))else
-        Try{ Ubicacion(Coordenada(coordenada.x+1, coordenada.y), orientacion)}
+      case Norte(char) => pocisionEsValida(drone.get, Ubicacion( Coordenada(coordenada.x, coordenada.y+1), orientacion))
+      case Sur(char) => pocisionEsValida(drone.get, Ubicacion( Coordenada(coordenada.x, coordenada.y-1), orientacion))
+      case Oeste(char) => pocisionEsValida(drone.get, Ubicacion( Coordenada(coordenada.x-1, coordenada.y), orientacion))
+      case Este(char) => pocisionEsValida(drone.get, Ubicacion( Coordenada(coordenada.x+1, coordenada.y), orientacion))
     }
   }
 
 //---------- Regla de negocio
-  override def pocisionEsValida(x: Int, y: Int):Boolean = {
-    Math.sqrt(  Math.pow(x,2) + Math.pow(y,2) ) <= 10
+  override def pocisionEsValida(drone: Drone, ubicacion: Ubicacion):Try[Ubicacion] = {
+    if (Math.sqrt(  Math.pow(ubicacion.coordenada.x,2) + Math.pow(ubicacion.coordenada.y,2) ) <= 10 )
+      Try{ubicacion}
+    else Try(throw new Exception("Se salio de rango"))
   }
 
-  override def llevarAlmuerzo(entrega: Entrega, drone: Drone): Drone = {
-    val recorrido = List(drone)
+  override def llevarEntrega(entrega: Entrega, drone:Try[ Drone ]):Try[Drone]= {
+    val recorrido = List(drone )
     val trazo = entrega.list.foldLeft(recorrido){(resultado, item) => resultado :+ moverDrone(item, resultado.last)}
-    trazo.last
+    reportarInformacion(trazo.last.get)
+    val reporte = trazo.map( x => x.get)
+    InterpreteServicioArchivo.entregarReporte(reporte.tail)
+    Try{trazo.last.get}
 
     //Reporte(trazo.last.ubicacion.coordenada.x, trazo.last.ubicacion.coordenada.x, trazo.last.ubicacion.orientacion)
   }
 
+  //def asincrono(pedido: Pedido, drone: Drone)(implicit ec: ExecutionContext): Future[List[Drone]] = Future(llevarPedido(drone, pedido))
+
+  override def reportarInformacion(drone: Drone): Unit = {
+    val hilera = drone.ubicacion.orientacion
+    print(s"${drone.ubicacion} direccion ")
+    if(hilera == Norte('N')) println("Norte")else if
+      (hilera == Sur('S')) println("Sur")else if
+      (hilera == Oeste('O')) print("Oeste") else
+      println("Este")
+  }
+
   override def llevarPedido(pedido: Pedido, drone: Drone): List[Reporte] = {
-
-    val recorrido = List(drone)
-    val trazo = pedido.list.foldLeft(recorrido){(resultado, item) => resultado :+ llevarAlmuerzo(item, resultado.last)}
-    trazo.last
-
-    val listaReporte = trazo.tail.map( x => Reporte(x.ubicacion.coordenada.x, x.ubicacion.coordenada.y, x.ubicacion.orientacion))
+    val recorrido = List(Try{drone})
+    val trazo = pedido.list.foldLeft(recorrido){(resultado, item) => resultado :+ llevarEntrega(item, resultado.last)}
+    val listaReporte = trazo.tail.map( x => Reporte(x.get.ubicacion.coordenada.x, x.get.ubicacion.coordenada.y, x.get.ubicacion.orientacion))
     listaReporte
   }
 
-  override def tomarPedido(list: List[String]): Try[Pedido] = {
-    val pedido = list.map( x => x.toList).map( x => x.map( y => Instruccion.newInstruccion(y)) ).map( x => Entrega(x))
-    if ( Try{Pedido(pedido)}.isSuccess == Try() )
+  override def tomarPedido(list: List[String]): Pedido = {
+    val pedido = list.map(x =>  x.toList ).map(y => y.map(z => Instruccion.newInstruccion(z) )  ).map( y => Entrega(y))
+    Pedido(pedido)
+  }
 
-    Try(Pedido(pedido))
+  override def tomarPedidos(list: List[List[String]]): List[Pedido] = {
+    val listaPedidos = list.map( x => tomarPedido(x) )
+    listaPedidos
+  }
 
-    //-------------One for One
-    /*val pedido1 = list.map(x => x.toList)
-
-    val pedido2 = pedido1.map( x => x.map( y => Instruccion.newInstruccion(y)))
-
-    val pedido3 = pedido2.map(x => Entrega(x))
-
-    val pedido4 = Pedido(pedido3)
-
-    pedido4
-    */
-
-    //-------------
+  override def mandarDrones(listaDrones: List[Drone], listaPedidos :List[Pedido]): Unit = {
+    val todo = listaDrones.zip( listaPedidos )
+    val nada = todo.map( x => llevarPedido(x._2, x._1))
   }
 
 }

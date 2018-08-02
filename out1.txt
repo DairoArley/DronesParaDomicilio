@@ -1,0 +1,8 @@
+== Reporte de entregas ==
+(-1,4) Orientacion Sur(S)
+(-1,3) Orientacion Sur(S)
+(-1,3) Orientacion Este(E)
+(0,3) Orientacion Este(E)
+(0,3) Orientacion Sur(S)
+(0,2) Orientacion Sur(S)
+(0,2) Orientacion Oeste(O)

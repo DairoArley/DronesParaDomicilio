@@ -21,3 +21,6 @@ compile
 testOnly co.com.scalatraining.testing.testEntidades
 compile
 testOnly co.com.scalatraining.testing.testEntidades
+clear
+exit
+testOnly co.com.scalatraining.testing.testEntidades
