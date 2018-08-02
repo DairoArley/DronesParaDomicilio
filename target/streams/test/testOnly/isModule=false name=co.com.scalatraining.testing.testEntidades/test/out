@@ -1,13 +1,11 @@
 [0m[[0m[0minfo[0m] [0m[0m[32mtestEntidades:[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- Probando[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- comprobando[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- Probando funcinaolidad de servicios drone[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- Testiando tjndvsknksdvk[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- leer archivo[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- Probando todo[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- Falla de un Objecto compuesto por un atributo failure[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test creancion de un Entrega[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m- Probando funcinalidad de servicios drone *** FAILED ***[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  Success(Drone(Ubicacion(Coordenada(0,2),Norte(N)),1,1)) did not equal Success(Drone(Ubicacion(Coordenada(0,1),Norte(N)),1,1)) (testEntidades.scala:23)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m- test leer archivo *** FAILED ***[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  List("AAAAIAAD", "DDAIAD", "AAIADAD") did not equal List("AAIAAD", "DAIAD", "AIAAA") (testEntidades.scala:30)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test Probando la funcionalidad[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- test se puede leer archivo de texto[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- test se puede crear un pedido[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- test Un pedido no valido[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- Probando todo again[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- Simulando mdffdain[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- Simulando Todo el programa[0m[0m

@@ -24,3 +24,4 @@ testOnly co.com.scalatraining.testing.testEntidades
 clear
 exit
 testOnly co.com.scalatraining.testing.testEntidades
+testOnly co.com.scalatraining.testing.testServicios
