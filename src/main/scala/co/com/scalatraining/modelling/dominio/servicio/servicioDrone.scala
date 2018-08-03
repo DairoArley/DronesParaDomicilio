@@ -98,7 +98,6 @@ sealed trait InterpretacionServicioDrone extends AlgebraServicioDrone {
     Try{trazo.last.get}
   }
 
-  //def asincrono(pedido: Pedido, drone: Drone)(implicit ec: ExecutionContext): Future[List[Drone]] = Future(llevarPedido(drone, pedido))
 
   override def reportarInformacion(drone: Drone): Unit = {
     val hilera = drone.ubicacion.orientacion
@@ -128,9 +127,9 @@ sealed trait InterpretacionServicioDrone extends AlgebraServicioDrone {
 
   override def mandarDrones(listaDrones: List[Drone], listaPedidos :List[Pedido]): Unit = {
     val todo = listaDrones.zip( listaPedidos )
-    implicit val ecParaPrimerHilo = ExecutionContext.fromExecutorService(Executors.newFixedThreadPool(20))
-    Future {val nada = todo.map( x => llevarPedido(x._2, x._1))
-    }( ecParaPrimerHilo )
+    //implicit val ecParaPrimerHilo = ExecutionContext.fromExecutorService(Executors.newFixedThreadPool(20))
+    val nada = todo.map( x => llevarPedido(x._2, x._1))
+    //}( ecParaPrimerHilo )
   }
 
 }

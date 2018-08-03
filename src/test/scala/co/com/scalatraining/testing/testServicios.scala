@@ -16,7 +16,7 @@ class testServicios extends FunSuite {
   }
 
   test ("test leer archivo"){
-    val path = "/home/seven4/Documents/Pedidos/"
+    val path = "src/resources/in/"
     val fileName = "in01.txt"
     val h = InterpreteServicioArchivo.leerArchivo(s"${path}${fileName}")
     assert(h == List("AAAAIAAD", "DDAIAD", "AAIADAD")  )
@@ -30,7 +30,7 @@ class testServicios extends FunSuite {
   }
 
   test("test Probando la funcionalidad"){
-    val path = "/home/seven4/Documents/Pedidos/"
+    val path = "src/resources/in/"
     val fileName = "in01.txt"
     val list = InterpreteServicioArchivo.leerArchivo(s"${path}${fileName}")
     val pedido = InterpretacionServicioDrone.tomarPedido(list)
@@ -43,14 +43,14 @@ class testServicios extends FunSuite {
 
 
   test("test se puede leer archivo de texto"){
-    val path = "/home/seven4/Documents/Pedidos/"
+    val path = "src/resources/in/"
     val fileName = "in01.txt"
     val list = InterpreteServicioArchivo.leerArchivo(s"${path}${fileName}")
     assert(list == List("AAAAIAAD", "DDAIAD", "AAIADAD") )
   }
 
   test("test se puede crear un pedido"){
-    val path = "/home/seven4/Documents/Pedidos/"
+    val path = "src/resources/in/"
     val fileName = "in01.txt"
     val list = InterpreteServicioArchivo.leerArchivo(s"${path}${fileName}")
     val pedido = InterpretacionServicioDrone.tomarPedido(list)
@@ -58,7 +58,7 @@ class testServicios extends FunSuite {
   }
 
   test("test Un pedido no valido"){
-    val path = "/home/seven4/Documents/Pedidos/"
+    val path = "src/resources/in/"
     val fileName = "in01.txt"
     val list = InterpreteServicioArchivo.leerArchivo(s"${path}${fileName}")
     val pedido = InterpretacionServicioDrone.tomarPedido(list)
@@ -66,16 +66,16 @@ class testServicios extends FunSuite {
   }
 
   test("Simulando Todo el programa"){
-    val hola = InterpreteServicioArchivo.leerArchivo("/home/seven4/Documents/Pedidos/in01.txt")
+    val hola = InterpreteServicioArchivo.leerArchivo("src/resources/in/in01.txt")
     val hela = InterpretacionServicioDrone.tomarPedido(hola)
     val hila = InterpretacionServicioDrone.llevarPedido(hela, Drone(Ubicacion(Coordenada(0,2), Norte('N')), 10, 1) )
     assert(hila == List(Reporte(-2,6,Norte('N')), Reporte(-1,5,Sur('S')), Reporte(0,2,Oeste('O')))  )
   }
 
   test("Simulando Todo el programa varios archivos"){
-    val hola = InterpreteServicioArchivo.leerArchivos("/home/seven4/Documents/Pedidos/")
-    val hela = hola.map( x => InterpretacionServicioDrone.tomarPedido(x))
-    val hila = hela.map( x => InterpretacionServicioDrone.llevarPedido(x, Drone(Ubicacion(Coordenada(0,2), Norte('N')), 10, 1) ) )
+    val hola = InterpreteServicioArchivo.leerArchivos("src/resources/in/")
+    val hela: List[Pedido] = hola.map(x => InterpretacionServicioDrone.tomarPedido(x))
+    val hila: List[List[Reporte]]: = hela.map(x => InterpretacionServicioDrone.llevarPedido(x, Drone(Ubicacion(Coordenada(0,2), Norte('N')), 10, 1) ) )
     assert(hila == List(List(Reporte(-2,6,Norte('N')), Reporte(-1,5,Sur('S')), Reporte(0,2,Oeste('O'))),
       List(Reporte(-2,6,Norte('N')), Reporte(-1,5,Sur('S')), Reporte(0,2,Oeste('O'))), List(Reporte(-2,6,Norte('N')),
         Reporte(-1,5,Sur('S')), Reporte(0,2,Oeste('O'))), List(Reporte(-2,6,Norte('N')), Reporte(-1,5,Sur('S')),
@@ -92,5 +92,9 @@ class testServicios extends FunSuite {
       List(Reporte(-2,6,Norte('N')), Reporte(-1,5,Sur('S')), Reporte(0,2,Oeste('O'))), List(Reporte(-2,6,Norte('N')),
         Reporte(-1,5,Sur('S')), Reporte(0,2,Oeste('O'))))
     )
+  }
+
+  test("mostrando"){
+
   }
 }
